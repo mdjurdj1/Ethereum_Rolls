@@ -1,0 +1,105 @@
+//title screen for RPS game
+confirm("Welcome to Rock Paper Scissors! \n Press enter to continue. \n \n Designed by Michael Djurdjevic");
+
+     //var for win counter
+    var winCounter = 0;
+    //var for loss counter
+    var lossCounter = 0;
+    //var for tie counter
+    var tieCounter = 0;
+    
+//Main game function - calling this plays the game.
+function Play() {
+    
+    //We need a "playing" bool for our while loop (main game loop)
+    var playing = true;
+  
+    //while (playing), execute main game functions
+    while (playing) {
+    //prompt user for input, conv to lowercase, store input in userChoice var
+    var userChoice = prompt("Do you choose Rock, Paper, Scissors?").toLowerCase();
+    //Computer rolls between 1 and 3, store result in computerRoll var
+    var computerRoll = Math.floor(Math.random() * 3 + 1);
+    //create computerChoice variable. Will store string result of computerRoll here.
+    var computerChoice;
+    
+//main game functions here. get cpu roll, compare results, score screen, continue?
+    getComputerRoll();
+    compareResults(userChoice, computerChoice);
+    scoreCounterScreen();
+    continueScreen();
+
+//function to convert computerRoll (random int) to computerChoice (string)
+function getComputerRoll() {
+//switch case converts the 3 possible outcomes from computerRoll (int) to (string).
+    switch(computerRoll) {
+        case 1: 
+            computerChoice = "rock";
+            break;
+        case 2: 
+            computerChoice = "paper";
+            break;
+        case 3: 
+            computerChoice = "scissors";
+            break;
+    }
+}
+
+//function takes your choice and cpu choice as param, compares to determine winner
+function compareResults(userChoice, computerChoice) {
+//a bunch of if/else statements to check if you won
+    if (userChoice === computerChoice) {
+        confirm("You and the computer tied! \n We can't count that as a win.");
+        tieCounter++;
+    }
+    else if (userChoice === "paper" && computerChoice === "rock") {
+        confirm("Your paper beats the Computer's rock!\n It's a wrap.");
+        winCounter++;
+    }
+    else if (userChoice === "rock" && computerChoice === "scissors") {
+        confirm("Your rock beats the computer's scissors!\n Krushed.");
+        winCounter++;
+    }
+    else if (userChoice === "scissors" && computerChoice === "paper") {
+        confirm("Your scissors beats the computer's Paper!\n Cut 'em up.");
+        winCounter++;
+    }
+    else {
+        confirm("The computer's " + computerChoice + " beats your "
+        + userChoice + ". \n Try again sonny. :(");
+        lossCounter++;
+    }
+};
+
+//function prompts the score count window
+function scoreCounterScreen() {
+    
+//easter egg message for any would-be RPS champions
+    var easterEgg = " ";
+    if (winCounter = 3) {
+        easterEgg = "\n\n Wow, 3 wins in my terrible JS project" +
+        "yer mum be proud m8!"};
+    if (lossCounter = 5) {
+        easterEgg = "\n\n Five losses!? NEVER LUCKY, BABYRAGE"};
+    
+//Score counter displays after every game played
+    var scoreCounter = confirm("Wins: " + winCounter + 
+    "\nLosses: " + lossCounter + 
+    "\nTies: " + tieCounter + "\n" + easterEgg);
+};
+    
+//function to pop continue game loop
+function continueScreen() {
+//playMore stores user input, checks if it is "continue", anything else quits
+    var playMore = prompt("Press 'C' to continue playing, otherwise exit game.").toUpperCase();
+    if (playMore === "C") {
+        playing = true;
+        }
+    else {
+        playing = false;
+        }
+};
+};
+};
+
+Play();
