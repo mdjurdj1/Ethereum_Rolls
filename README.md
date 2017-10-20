@@ -1,4 +1,4 @@
-# WeiLongBet
+# Ethereum Quickbets!
 
 Purpose of this is to use the Truffle suite with React to create an interesting Solidity App that also integrates
 Browser plugins like MetaMask or Mist that allow anyone to interact with Dapps (apps that utilize the ethereum blockchain as a backend of sorts)
